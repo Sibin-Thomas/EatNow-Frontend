@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../images/logo.jpg"
 
 class Branding extends React.Component {
+    
     render()
     {
         return (
