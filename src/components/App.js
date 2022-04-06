@@ -9,11 +9,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <div className="container-fluid">
-                    <Login/>
-                </div>
-            </BrowserRouter>
+            <div className="container-fluid">
+                <Login/>
+            </div>
         )
     }
 }
