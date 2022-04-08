@@ -54,6 +54,13 @@ class Register extends React.Component {
                         </div>
                         <div className="col"/>
                     </div>
+                    <div className="row w-100 mt-2">
+                        <div className="col"/>
+                        <div className="col-3">
+                            <input type="button" className="form-control-lg shadow-none btn-primary" value="Submit"/>
+                        </div>
+                        <div className="col"/>
+                    </div>
                 </div>
             </div>
         );
