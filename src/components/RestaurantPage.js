@@ -1,10 +1,10 @@
 import Branding from "./Branding";
 import React, { useEffect, useState }  from "react";
-import Search from "./Search";
 import UserAccount from "./UserAccount";
 import { Route, useParams, useSearchParams } from "react-router-dom";
+import Menu from "./Menu";
 
-function UserPage({navigation, route}) {
+function RestaurantPage({navigation, route}) {
     const [tabValue, setTabValue] = useState("search")
     const [userDetails, setUserDetails] = useState()
     let {userId} = useParams();
@@ -23,20 +23,16 @@ function UserPage({navigation, route}) {
             .then(res => res.json())
             .then(res => setUserDetails(res))
         }
-    );
+    , []);
 
     const renderTabs = (value) =>
     {
         switch(value)
         {
-            case "search":
-                return <Search></Search>
             case "account":
                 return <UserAccount username={userDetails.username} address={userDetails.address} email={userDetails.email} phone={userDetails.phone}></UserAccount>
-            case "order":
-                return <UserAccount></UserAccount>
-            case "booking":
-                return <Search></Search>
+            case "menu":
+                return <Menu user_id={userId}></Menu>
         }
     }
 
@@ -51,10 +47,9 @@ function UserPage({navigation, route}) {
             <div className="row mt-3">
                 <div className="col-3">
                     <div className="container">
-                        <button className="container btn-primary d-block" id="search" onClick={onTabClick}>Search Restaurant</button>
                         <button className="container btn-primary d-block" id="account" onClick={onTabClick}>Account</button>
-                        <button className="container btn-primary d-block" id="order" onClick={onTabClick}>Order History</button>
-                        <button className="container btn-primary d-block" id="booking" onClick={onTabClick}>Booking History</button>
+                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Menu</button>
+                        
                     </div>
                 </div>
                 <div className="col-8">
@@ -67,4 +62,4 @@ function UserPage({navigation, route}) {
     );
 }
 
-export default UserPage;
+export default RestaurantPage;

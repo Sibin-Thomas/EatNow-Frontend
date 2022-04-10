@@ -2,6 +2,34 @@ import React from "react";
 import Branding from "./Branding";
 
 class Register extends React.Component {
+
+    constructor(props)
+    {
+        super(props)
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onSubmit()
+    {
+        console.log(document.getElementById("address").value);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+        fetch("http://localhost:8080/addUser", {
+            method: "POST",
+            body: JSON.stringify({
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+                type: document.getElementById("selectMode").value,
+                address: document.getElementById("address").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/text'
+            }
+        })
+        .then((res) => res.text())
+        .then((res) => console.log(res))
+    }
     
     render() {
         return (
@@ -12,10 +40,10 @@ class Register extends React.Component {
                     <div className="row w-100">
                         <div className="col"/>
                         <div className="col-3">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Restaurant
-                        </label>
+                            <select class="form-select" aria-label="Default select example" id="selectMode">
+                                <option selected>Customer</option>
+                                <option value="1">Restaurant</option>
+                            </select>
                         </div>
                         <div className="col"/>
                     </div>
@@ -57,7 +85,7 @@ class Register extends React.Component {
                     <div className="row w-100 mt-2">
                         <div className="col"/>
                         <div className="col-3">
-                            <input type="button" className="form-control-lg shadow-none btn-primary" value="Submit"/>
+                            <input type="button" className="form-control-lg shadow-none btn-primary" value="Submit" onClick={this.onSubmit}/>
                         </div>
                         <div className="col"/>
                     </div>
