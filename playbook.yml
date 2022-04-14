@@ -1,0 +1,15 @@
+---
+
+- name: fetch docker container
+  hosts: all
+  become: true
+
+  tasks:
+  - name: pull image
+    docker_container:
+      name: nothingnew
+      image: sibindockerhub/eatnow-frontend:ver1
+      pull: yes
+      state: started
+      ports:
+      - "5000:3000"
