@@ -1,1 +1,1 @@
-172.16.134.200 ansible_user=sibin
+localhost ansible_ssh_user=sibin 
