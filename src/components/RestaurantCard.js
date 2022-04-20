@@ -1,27 +1,25 @@
 import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-class RestaurantCard extends React.Component {
-    constructor(props)
-    {
-        super(props);
-        this.onRestaurantClick = this.onRestaurantClick.bind(this)
-    }
+function RestaurantCard (props){
+
+    let navigate = useNavigate();
     
-    onRestaurantClick()
+    const onRestaurantClick = () =>
     {
-        console.log(this.props.restaurantId)
+        console.log(props.restaurantId)
+        navigate("/restaurantNavigatePage/"+props.restaurantId)
     }
 
-    render() {
-        return (
-            <div className="mt-1 border border-3 p-2" onClick={this.onRestaurantClick}>
-                <h3>{this.props.name}</h3>
-                <h5>{this.props.address}</h5>
-                <h6>Rating: {this.props.rating}</h6>
-                <h6>{this.props.diningAvailable == "true" ? "Dining Available": ""}</h6>
-            </div>
-        ) 
-    }
+    return (
+        <div className="mt-1 border border-3 p-2" onClick={onRestaurantClick}>
+            <h3>{props.name}</h3>
+            <h5>{props.address}</h5>
+            <h6>Rating: {props.rating}</h6>
+            <h6>{props.diningAvailable == "true" ? "Dining Available": ""}</h6>
+        </div>
+    ) 
+    
 }
 
 export default RestaurantCard;

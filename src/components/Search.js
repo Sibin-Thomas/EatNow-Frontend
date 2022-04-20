@@ -17,7 +17,7 @@ class Search extends React.Component {
     onSearchClick() 
     {
         // console.log(this.state.searchValue)
-        fetch("http://localhost:8080/searchRestaurants", 
+        fetch("http://localhost:8090/searchRestaurants", 
         {
             method: "POST",
             body: JSON.stringify({searchValue: this.state.searchValue}),
@@ -54,7 +54,7 @@ class Search extends React.Component {
                 </div>
                 {
                     this.state.restaurantList.map(
-                        (restaurant) => <RestaurantCard name={restaurant[0]} id={restaurant[4]} rating={restaurant[1]} address={restaurant[2]} diningAvailable={restaurant[3]} restaurantId={restaurant[4]}/>
+                        (restaurant) => <RestaurantCard name={restaurant.username} rating={restaurant.rating} address={restaurant.address} diningAvailable={restaurant.diningAvailable} restaurantId={restaurant.user_id}/>
                         )
                 }
             </div>

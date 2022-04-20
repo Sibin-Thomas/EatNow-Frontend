@@ -1,1 +1,1 @@
-localhost ansible_ssh_user=sibin1 ansible_ssh_pass=password 
+localhost ansible_ssh_user=sibin

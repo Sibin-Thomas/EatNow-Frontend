@@ -1,12 +1,14 @@
 import Branding from "./Branding";
 import React, { useEffect, useState }  from "react";
-import Search from "./Search";
 import UserAccount from "./UserAccount";
-import {useParams} from "react-router-dom";
+import { Route, useParams, useSearchParams } from "react-router-dom";
+import Menu from "./Menu";
+import Cart from "./Cart";
 
-function UserPage({navigation, route}) {
+function RestaurantNavigatePage(props) {
     const [tabValue, setTabValue] = useState("search")
     const [userDetails, setUserDetails] = useState()
+    const [cart, setCart] = useState([])
     let {userId} = useParams();
 
     useEffect(
@@ -22,21 +24,33 @@ function UserPage({navigation, route}) {
             })
             .then(res => res.json())
             .then(res => setUserDetails(res))
-        }, []
-    );
+        }
+    , []);
+
+    const updateCart = (data) => {
+        let x = cart
+        x.push(data)
+        setCart(x)
+    }
+
+    const clearCart = () => {
+        setCart([])
+    }
 
     const renderTabs = (value) =>
     {
         switch(value)
         {
-            case "search":
-                return <Search></Search>
             case "account":
                 return <UserAccount username={userDetails.username} address={userDetails.address} email={userDetails.email} phone={userDetails.phone}></UserAccount>
-            case "order":
-                return <UserAccount></UserAccount>
-            case "booking":
-                return <Search></Search>
+            case "menu":
+                return (
+                    <div>
+                        <Menu user_id={userId} isRestaurant={false} passDishData={updateCart}></Menu>
+                    </div>
+                );
+            case "cart":
+                return <Cart cartItems={cart} userId={userId} clearCart={clearCart}/>        
         }
     }
 
@@ -51,10 +65,9 @@ function UserPage({navigation, route}) {
             <div className="row mt-3">
                 <div className="col-3">
                     <div className="container">
-                        <button className="container btn-primary d-block" id="search" onClick={onTabClick}>Search Restaurant</button>
                         <button className="container btn-primary d-block" id="account" onClick={onTabClick}>Account</button>
-                        <button className="container btn-primary d-block" id="order" onClick={onTabClick}>Order History</button>
-                        <button className="container btn-primary d-block" id="booking" onClick={onTabClick}>Booking History</button>
+                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Menu</button>
+                        <button className="container btn-primary d-block" id="cart" onClick={onTabClick}>Cart</button>
                     </div>
                 </div>
                 <div className="col-8">
@@ -67,4 +80,4 @@ function UserPage({navigation, route}) {
     );
 }
 
-export default UserPage;
+export default RestaurantNavigatePage;
