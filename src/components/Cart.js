@@ -32,7 +32,8 @@ function Cart (props) {
             body : JSON.stringify({
                 "userId": props.userId,
                 "menuItemIds": menuItemIds,
-                "orderTotal": total
+                "orderTotal": total,
+                "restaurantId": props.restaurantId
             })
         })
         .then(res => res.text())

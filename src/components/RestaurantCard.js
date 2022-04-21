@@ -8,7 +8,8 @@ function RestaurantCard (props){
     const onRestaurantClick = () =>
     {
         console.log(props.restaurantId)
-        navigate("/restaurantNavigatePage/"+props.restaurantId)
+        navigate("/restaurantNavigatePage/"+props.userId+"/"+props.restaurantId, 
+        )
     }
 
     return (

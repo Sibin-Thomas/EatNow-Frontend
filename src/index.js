@@ -15,7 +15,7 @@ ReactDOM.render(
         <Route path='/register' element={<Register/> } />
         <Route path='/userPage/:userId' element={<UserPage/> } />
         <Route path='/restaurantPage/:userId' element={<RestaurantPage/>} />
-        <Route path='/restaurantNavigatePage/:userId' element={<RestaurantNavigatePage/>} />
+        <Route path='/restaurantNavigatePage/:userId/:restaurantId' element={<RestaurantNavigatePage/>} />
     </Routes>
   </BrowserRouter>
   ,

@@ -30,7 +30,7 @@ function UserPage({navigation, route}) {
         switch(value)
         {
             case "search":
-                return <Search></Search>
+                return <Search userId={userId}></Search>
             case "account":
                 return <UserAccount username={userDetails.username} address={userDetails.address} email={userDetails.email} phone={userDetails.phone}></UserAccount>
             case "order":
