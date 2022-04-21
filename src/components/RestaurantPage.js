@@ -76,7 +76,9 @@ function RestaurantPage(props) {
                     <div className="container">
                         <button className="container btn-primary d-block" id="account" onClick={onTabClick}>Account</button>
                         <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Menu</button>
-                        
+                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Pending Orders</button>
+                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Order History</button>
+                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Dining</button>
                     </div>
                 </div>
                 <div className="col-8">

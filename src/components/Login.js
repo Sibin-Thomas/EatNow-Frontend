@@ -36,7 +36,7 @@ function Login() {
                     <div className="col-3">
                         <select class="form-select" aria-label="Default select example" id="selectMode">
                             <option selected>Customer</option>
-                            <option value="1">Restaurant</option>
+                            <option>Restaurant</option>
                         </select>
                     </div>
                     <div className="col"/>

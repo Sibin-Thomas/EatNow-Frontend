@@ -49,7 +49,7 @@ function Cart (props) {
         <div>
             {
                 cartItems.map(
-                    (menu) => <MenuItemCard key={menu.menu_id} dishName = {menu.dishName} price = {menu.price}/>
+                    (menu) => <MenuItemCard key={menu.menu_id+new Date().toUTCString()} dishName = {menu.dishName} price = {menu.price}/>
                 )
             }
             {
