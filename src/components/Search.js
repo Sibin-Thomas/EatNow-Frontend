@@ -54,7 +54,7 @@ class Search extends React.Component {
                 </div>
                 {
                     this.state.restaurantList.map(
-                        (restaurant) => <RestaurantCard name={restaurant.username} rating={restaurant.rating} address={restaurant.address} diningAvailable={restaurant.diningAvailable} restaurantId={restaurant.user_id} userId={this.props.userId}/>
+                        (restaurant) => <RestaurantCard name={restaurant.username} rating={restaurant.rating} address={restaurant.address} diningAvailable={restaurant.diningAvailable} restaurantId={restaurant.userId} userId={this.props.userId}/>
                         )
                 }
             </div>

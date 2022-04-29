@@ -3,6 +3,8 @@ import React, { useEffect, useState }  from "react";
 import UserAccount from "./UserAccount";
 import { Route, useParams, useSearchParams } from "react-router-dom";
 import Menu from "./Menu";
+import Reviews from "./Reviews";
+import Gallery from "./Gallery";
 
 function RestaurantPage(props) {
     const [tabValue, setTabValue] = useState("search")
@@ -59,7 +61,11 @@ function RestaurantPage(props) {
                             <input type="submit" className="btn-primary" onClick={onAddDish}></input>
                         </div>
                     </div>
-                );
+                )
+            case "reviews":
+                return <Reviews restaurantId={userId} />
+            case "gallery":
+                return <Gallery restaurantId={userId} userId={userId}/>
         }
     }
 
@@ -76,9 +82,10 @@ function RestaurantPage(props) {
                     <div className="container">
                         <button className="container btn-primary d-block" id="account" onClick={onTabClick}>Account</button>
                         <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Menu</button>
-                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Pending Orders</button>
-                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Order History</button>
+                        <button className="container btn-primary d-block" id="pending_orders" onClick={onTabClick}>Pending Orders</button>
+                        <button className="container btn-primary d-block" id="order_history" onClick={onTabClick}>Order History</button>
                         <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Dining</button>
+                        <button className="container btn-primary d-block" id="reviews" onClick={onTabClick}>Reviews</button>
                     </div>
                 </div>
                 <div className="col-8">

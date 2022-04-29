@@ -4,6 +4,8 @@ import UserAccount from "./UserAccount";
 import { Route, useParams, useSearchParams } from "react-router-dom";
 import Menu from "./Menu";
 import Cart from "./Cart";
+import Reviews from "./Reviews";
+import Gallery from "./Gallery";
 
 function RestaurantNavigatePage({route, navigation}) {
     const [tabValue, setTabValue] = useState("search")
@@ -37,6 +39,24 @@ function RestaurantNavigatePage({route, navigation}) {
         setCart([])
     }
 
+    const onAddComment = () => {
+        fetch('http://localhost:8090/addComments', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify({
+                    "userId" : userId,
+                    "restaurantId": restaurantId,
+                    "rating": document.getElementById('rating').value,
+                    "comment": document.getElementById('comment').value
+
+                })
+            })
+            .then(res => res.text())
+            .then(res => console.log(res))
+    }
+
     const renderTabs = (value) =>
     {
         switch(value)
@@ -50,7 +70,20 @@ function RestaurantNavigatePage({route, navigation}) {
                     </div>
                 );
             case "cart":
-                return <Cart userId={userId} cartItems={cart} restaurantId={restaurantId} clearCart={clearCart}/>        
+                return <Cart userId={userId} cartItems={cart} restaurantId={restaurantId} clearCart={clearCart}/>  
+            case "reviews":
+                return (
+                <div>
+                    <Reviews userId={userId} restaurantId={restaurantId} />
+                    <div>
+                            <input type="text" className="display-inline p-2 m-3" id="rating" placeholder="Rating 0-5"></input>
+                            <input type="text" className="display-inline p-2 m-3" id="comment" placeholder="Comment"></input>
+                            <input type="submit" className="btn-primary" onClick={onAddComment}></input>
+                    </div>
+                </div>
+                );
+            case "gallery":
+                return <Gallery userId={userId} restaurantId={restaurantId} />
         }
     }
 
@@ -68,6 +101,8 @@ function RestaurantNavigatePage({route, navigation}) {
                         <button className="container btn-primary d-block" id="account" onClick={onTabClick}>Information</button>
                         <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Menu</button>
                         <button className="container btn-primary d-block" id="cart" onClick={onTabClick}>Cart</button>
+                        <button className="container btn-primary d-block" id="reviews" onClick={onTabClick}>Reviews</button>
+                        <button className="container btn-primary d-block" id="gallery" onClick={onTabClick}>Gallery</button>
                     </div>
                 </div>
                 <div className="col-8">

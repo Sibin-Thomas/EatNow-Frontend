@@ -22,7 +22,7 @@ function Login() {
             })
         })
         .then(res => res.json())
-        .then(res => res.user_id == null ? console.log("incorrect credentials") : (document.getElementById('selectMode').value === 'Customer' ? navigate("/userPage/"+res.user_id) : navigate("/restaurantPage/"+res.user_id)))
+        .then(res => res.userId == null ? console.log("incorrect credentials") : (document.getElementById('selectMode').value === 'Customer' ? navigate("/userPage/"+res.userId) : navigate("/restaurantPage/"+res.userId)))
     
     }
 

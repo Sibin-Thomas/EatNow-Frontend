@@ -1,15 +1,19 @@
 ---
 
-- name: fetch docker container
+- name: run containers
   hosts: all
   become: true
 
   tasks:
-  - name: pull image
-    docker_container:
-      name: nothingnew
-      image: sibindockerhub/eatnow-frontend:ver1
-      pull: yes
-      state: started
-      ports:
-      - "5000:3000"
+  - name: copy docker file
+    copy:
+      src: Doc/docker-compose.yml
+      dest: docker-compose.yml
+  - name: list files
+    shell:
+      cmd: ls
+  - name: dockercompose
+    docker_compose:
+      project_src: .
+      state: present
+     
