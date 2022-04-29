@@ -7,7 +7,7 @@
   tasks:
   - name: copy docker file
     copy:
-      src: Doc/docker-compose.yml
+      src: docker-compose.yml
       dest: docker-compose.yml
   - name: list files
     shell:
