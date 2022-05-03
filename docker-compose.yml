@@ -1,9 +1,9 @@
 version: '3'
 services:
 
-  cqcmp-mysql6:
+  db:
     image: "mysql:latest"
-    container_name: cqcmp-mysql6
+    container_name: eatnow_database
     volumes:
       - mysql-data:/var/lib/mysql6/data2
     ports:
@@ -11,18 +11,18 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
 
-  cqcmp-app8:
+  backend:
     image: "sibindockerhub/eatnow-backend:ver1"
-    container_name: cqcmp-app8
+    container_name: eatnow_backend
     restart: on-failure
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://cqcmp-mysql6:3306/eatnowdb?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_URL=jdbc:mysql://frontend:3306/eatnowdb?createDatabaseIfNotExist=true
     ports:
       - 8090:8090
 
-  cqcmp-ui:
+  frontend:
     image: "sibindockerhub/eatnow-frontend:ver1"
-    container_name: cqcmp-ui
+    container_name: frontend
     ports:
       - 4200:3000
 
