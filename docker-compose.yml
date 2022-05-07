@@ -16,13 +16,13 @@ services:
     container_name: eatnow_backend
     restart: on-failure
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://frontend:3306/eatnowdb?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/eatnowdb?createDatabaseIfNotExist=true
     ports:
       - 8090:8090
 
   frontend:
     image: "sibindockerhub/eatnow-frontend:ver1"
-    container_name: frontend
+    container_name: eatnow_frontend
     ports:
       - 4200:3000
 

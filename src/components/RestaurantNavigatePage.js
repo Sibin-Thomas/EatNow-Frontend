@@ -15,7 +15,7 @@ function RestaurantNavigatePage({route, navigation}) {
 
     useEffect(
         () => {
-            fetch('http://localhost:8090/findUserById', {
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/findUserById", {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json"
@@ -40,7 +40,7 @@ function RestaurantNavigatePage({route, navigation}) {
     }
 
     const onAddComment = () => {
-        fetch('http://localhost:8090/addComments', {
+        fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/addComments", {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json"

@@ -17,7 +17,7 @@ class Search extends React.Component {
     onSearchClick() 
     {
         // console.log(this.state.searchValue)
-        fetch("http://localhost:8090/searchRestaurants", 
+        fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/searchRestaurants", 
         {
             method: "POST",
             body: JSON.stringify({searchValue: this.state.searchValue}),

@@ -5,7 +5,7 @@ function Reviews(props)
     const [comments, setComments] = useState([])
     useEffect(
         () => {
-            fetch("http://localhost:8090/findComments", 
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/findComments", 
         {
             method: "POST",
             headers: {

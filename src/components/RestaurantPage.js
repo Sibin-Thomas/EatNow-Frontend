@@ -13,7 +13,7 @@ function RestaurantPage(props) {
 
     useEffect(
         () => {
-            fetch('http://localhost:8090/findUserById', {
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/findUserById", {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json"
@@ -29,7 +29,7 @@ function RestaurantPage(props) {
 
     const onAddDish = () =>
     {
-        fetch("http://localhost:8090/addMenuItem", {
+        fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/addMenuItem", {
             method: "POST",
             body: JSON.stringify({
                 name: document.getElementById("dishName").value,

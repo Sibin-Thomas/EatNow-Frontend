@@ -12,7 +12,7 @@ class Register extends React.Component {
     onSubmit()
     {
         console.log(document.getElementById("address").value);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-        fetch("http://localhost:8090/addUser", {
+        fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/addUser", {
             method: "POST",
             body: JSON.stringify({
                 username: document.getElementById("username").value,
@@ -42,7 +42,7 @@ class Register extends React.Component {
                         <div className="col-3">
                             <select class="form-select" aria-label="Default select example" id="selectMode">
                                 <option selected>Customer</option>
-                                <option value="1">Restaurant</option>
+                                <option>Restaurant</option>
                             </select>
                         </div>
                         <div className="col"/>

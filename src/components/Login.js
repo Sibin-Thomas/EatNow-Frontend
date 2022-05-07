@@ -9,7 +9,7 @@ function Login() {
 
     const onSubmit = () =>
     {
-        fetch("http://localhost:8090/findUser", 
+        fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/findUser", 
         {
             method: "POST",
             headers: {
@@ -21,9 +21,10 @@ function Login() {
                 "type": document.getElementById('selectMode').value
             })
         })
-        .then(res => res.json())
+        // .then(res => console.log(res))
+        .then(res => res == null ? res : res.json())
         .then(res => res.userId == null ? console.log("incorrect credentials") : (document.getElementById('selectMode').value === 'Customer' ? navigate("/userPage/"+res.userId) : navigate("/restaurantPage/"+res.userId)))
-    
+        console.log(process.env.WHAT)
     }
 
     return (

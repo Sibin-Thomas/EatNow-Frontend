@@ -7,7 +7,7 @@ function OrderHistory (props)
         
         () => {
             console.log(props.userId)
-            fetch("http://localhost:8090/fetchUserOrders", 
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/fetchUserOrders", 
         {
             method: "POST",
             headers: {

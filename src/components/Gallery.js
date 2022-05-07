@@ -10,7 +10,7 @@ function Gallery(props) {
             console.log(props.restaurantId)
             let formData = new FormData();
             formData.append("restaurantId", props.restaurantId)
-            fetch("http://localhost:8090/getImages", {
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/getImages", {
                 method: "POST",
                 body : formData
             })
@@ -30,7 +30,7 @@ function Gallery(props) {
         formData.append("restaurantId", props.restaurantId)
         formData.append("image", uploadImage)
         formData.append("userId", props.userId)
-        fetch("http://localhost:8090/addImage", {
+        fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/addImage", {
             method: "POST",
             body : formData
         })

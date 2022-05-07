@@ -8,7 +8,7 @@ function Menu(props)
     useEffect(
         () => {
             // console.log(props.isRestaurant);
-            fetch("http://localhost:8090/findMenuItems", {
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/findMenuItems", {
                 method: "POST",
                 body: JSON.stringify({
                     restaurant_id: props.user_id

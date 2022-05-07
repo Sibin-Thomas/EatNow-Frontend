@@ -23,7 +23,7 @@ function Cart (props) {
             (cartItem) => menuItemIds.push(cartItem.menu_id)
         )
         console.log(menuItemIds);
-        fetch("http://localhost:8090/placeOrder", 
+        fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/placeOrder", 
         {
             method: "POST",
             headers: {
