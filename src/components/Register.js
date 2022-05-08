@@ -29,6 +29,7 @@ class Register extends React.Component {
         })
         .then((res) => res.text())
         .then((res) => console.log(res))
+        .then(alert('User Registered'))
     }
     
     render() {

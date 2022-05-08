@@ -4,6 +4,7 @@ import MenuItemCard from "./MenuItemCard";
 function Menu(props)
 {
     const [menuItems, setMenuItems] = useState([]);
+    const [fetched, setFetched] = useState(false);
 
     useEffect(
         () => {
@@ -20,20 +21,29 @@ function Menu(props)
             })
             .then((res) => res.json())
             .then((res) => setMenuItems(res))
+            .then(setFetched(true))
             
         }, []
     )
 
-    
-    return (
-        <div>
+    if (fetched)
+    {
+        return (
+            <div>
             {
                 menuItems.map(
                     (menu) => <MenuItemCard key={menu.menu_item_id} id={menu.menu_item_id} dishName = {menu.name} price = {menu.price} isRestaurant={props.isRestaurant} passDishData={props.passDishData}/>
                 )
             }
-        </div>
-    )
+            </div>
+        );
+    }
+    else
+    {
+        return (
+            <div></div>
+        )
+    }
 }
 
 export default Menu;
