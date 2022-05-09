@@ -5,6 +5,11 @@ import { Route, useParams, useSearchParams } from "react-router-dom";
 import Menu from "./Menu";
 import Reviews from "./Reviews";
 import Gallery from "./Gallery";
+import RestaurantOrderHistory from "./RestaurantOrderHistory";
+import RestaurantPendingOrderHistory from "./RestaurantPendingOrderHistory";
+import DiningRestaurant from "./DiningRestaurant";
+import BookingHistory from "./BookingHistory";
+import DiningUser from "./DiningUser";
 
 function RestaurantPage(props) {
     const [tabValue, setTabValue] = useState("search")
@@ -42,7 +47,7 @@ function RestaurantPage(props) {
             }
         })
         .then((res) => res.text())
-        .then((res) => console.log(res))
+        .then((res) => alert("Dish Added Successfully"))
     }
 
     const renderTabs = (value) =>
@@ -66,6 +71,16 @@ function RestaurantPage(props) {
                 return <Reviews restaurantId={userId} />
             case "gallery":
                 return <Gallery restaurantId={userId} userId={userId}/>
+            case "pending_orders":
+                return <RestaurantPendingOrderHistory restaurantId={userId} status="pending" sss={"sd"}></RestaurantPendingOrderHistory>
+            case "order_history":
+                return <RestaurantOrderHistory restaurantId={userId} status="notpending"></RestaurantOrderHistory>
+            case "dining":
+                return <DiningRestaurant restaurantId={userId}/>
+            case "booking_history":
+                return <BookingHistory userId={userId} restaurantId={userId} type={"Restaurant"} />
+            case "booking_table":
+                return <DiningUser userId={userId} restaurantId={userId}/>
         }
     }
 
@@ -84,8 +99,10 @@ function RestaurantPage(props) {
                         <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Menu</button>
                         <button className="container btn-primary d-block" id="pending_orders" onClick={onTabClick}>Pending Orders</button>
                         <button className="container btn-primary d-block" id="order_history" onClick={onTabClick}>Order History</button>
-                        <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Dining</button>
                         <button className="container btn-primary d-block" id="reviews" onClick={onTabClick}>Reviews</button>
+                        <button className="container btn-primary d-block" id="dining" onClick={onTabClick}>Dining Capacity</button>
+                        <button className="container btn-primary d-block" id="booking_history" onClick={onTabClick}>Booking History</button>
+                        <button className="container btn-primary d-block" id="booking_table" onClick={onTabClick}>Booking Table</button>
                     </div>
                 </div>
                 <div className="col-8">

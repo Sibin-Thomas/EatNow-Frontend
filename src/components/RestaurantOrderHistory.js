@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
 
-function OrderHistory (props) 
+function RestaurantOrderHistory (props) 
 {
     const [orders, setOrders] = useState([]);
     const [fetched, setFetched] = useState(false);
     useEffect(
         
         () => {
-            console.log(props.userId)
-            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/fetchUserOrders", 
+            console.log(props.status)
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/retaurantOrderHistory", 
             {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json"
                 },
                 body : JSON.stringify({
-                    "user_id": props.userId
+                    "user_id": props.restaurantId,
+                    "orderStatus": props.status
                 })
             })
             .then(res => res.json())
@@ -56,4 +57,4 @@ function OrderHistory (props)
     }
 }
 
-export default OrderHistory;
+export default RestaurantOrderHistory;

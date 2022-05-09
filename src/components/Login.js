@@ -21,10 +21,8 @@ function Login() {
                 "type": document.getElementById('selectMode').value
             })
         })
-        // .then(res => console.log(res))
-        .then(res => res == null ? res : res.json())
-        .then(res => res.userId == null ? console.log("incorrect credentials") : (document.getElementById('selectMode').value === 'Customer' ? navigate("/userPage/"+res.userId) : navigate("/restaurantPage/"+res.userId)))
-        console.log(process.env.WHAT)
+        .then(res => res.json())
+        .then(res => res == undefined ? alert("incorrect credentials") : (document.getElementById('selectMode').value === 'Customer' ? navigate("/userPage/"+res.userId) : navigate("/restaurantPage/"+res.userId)))
     }
 
     return (

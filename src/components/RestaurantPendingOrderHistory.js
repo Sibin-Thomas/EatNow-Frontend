@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
+import OrderStatusDecider from "./OrderStatusDecider";
 
-function OrderHistory (props) 
+function RestaurantPendingOrderHistory (props) 
 {
     const [orders, setOrders] = useState([]);
     const [fetched, setFetched] = useState(false);
     useEffect(
         
         () => {
-            console.log(props.userId)
-            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/fetchUserOrders", 
+            console.log(props.status)
+            fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/retaurantOrderHistory", 
             {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json"
                 },
                 body : JSON.stringify({
-                    "user_id": props.userId
+                    "user_id": props.restaurantId,
+                    "orderStatus": props.status
                 })
             })
             .then(res => res.json())
@@ -23,6 +25,9 @@ function OrderHistory (props)
             .then(setFetched(true))
         }
     ,[])
+
+    
+
     if (fetched)
     {
         return (
@@ -41,7 +46,8 @@ function OrderHistory (props)
                             <h6 className="text-success">ACCEPTED</h6>
                             :
                             <h6 className="text-danger">NOT ACCEPTED</h6>
-                        }</h6>
+                            }</h6>
+                            <OrderStatusDecider orderId={order.orderId}></OrderStatusDecider>
                         </div>
                     )
                 }
@@ -56,4 +62,4 @@ function OrderHistory (props)
     }
 }
 
-export default OrderHistory;
+export default RestaurantPendingOrderHistory;

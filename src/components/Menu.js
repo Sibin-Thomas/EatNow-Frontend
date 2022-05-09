@@ -12,7 +12,7 @@ function Menu(props)
             fetch(process.env.REACT_APP_BACKEND_ENDPOINT+"/findMenuItems", {
                 method: "POST",
                 body: JSON.stringify({
-                    restaurant_id: props.user_id
+                    "restaurant_id": props.user_id
                 }),
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,6 +21,7 @@ function Menu(props)
             })
             .then((res) => res.json())
             .then((res) => setMenuItems(res))
+            .then(res => console.log(res))
             .then(setFetched(true))
             
         }, []

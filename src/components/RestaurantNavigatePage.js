@@ -6,6 +6,7 @@ import Menu from "./Menu";
 import Cart from "./Cart";
 import Reviews from "./Reviews";
 import Gallery from "./Gallery";
+import DiningUser from "./DiningUser";
 
 function RestaurantNavigatePage({route, navigation}) {
     const [tabValue, setTabValue] = useState("search")
@@ -84,6 +85,8 @@ function RestaurantNavigatePage({route, navigation}) {
                 );
             case "gallery":
                 return <Gallery userId={userId} restaurantId={restaurantId} />
+            case "dining":
+                return <DiningUser userId={userId} restaurantId={restaurantId}/>
         }
     }
 
@@ -103,6 +106,7 @@ function RestaurantNavigatePage({route, navigation}) {
                         <button className="container btn-primary d-block" id="cart" onClick={onTabClick}>Cart</button>
                         <button className="container btn-primary d-block" id="reviews" onClick={onTabClick}>Reviews</button>
                         <button className="container btn-primary d-block" id="gallery" onClick={onTabClick}>Gallery</button>
+                        <button className="container btn-primary d-block" id="dining" onClick={onTabClick}>Dining</button>
                     </div>
                 </div>
                 <div className="col-8">

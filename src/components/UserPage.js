@@ -4,6 +4,7 @@ import Search from "./Search";
 import UserAccount from "./UserAccount";
 import {useParams} from "react-router-dom";
 import OrderHistory from "./OrderHistory";
+import BookingHistory from "./BookingHistory";
 
 function UserPage({navigation, route}) {
     const [tabValue, setTabValue] = useState("search")
@@ -37,7 +38,7 @@ function UserPage({navigation, route}) {
             case "order":
                 return <OrderHistory userId={userId}></OrderHistory>
             case "booking":
-                return <Search></Search>
+                return <BookingHistory userId={userId} restaurantId={userId} type={"Customer"} />
         }
     }
 

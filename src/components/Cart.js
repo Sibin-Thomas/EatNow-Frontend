@@ -43,6 +43,7 @@ function Cart (props) {
             setCartItems([]);
             props.clearCart();
         })
+        .then(alert("Order Placed Successfully"))
     }
 
     return (
