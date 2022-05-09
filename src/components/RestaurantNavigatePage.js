@@ -105,7 +105,6 @@ function RestaurantNavigatePage({route, navigation}) {
                         <button className="container btn-primary d-block" id="menu" onClick={onTabClick}>Menu</button>
                         <button className="container btn-primary d-block" id="cart" onClick={onTabClick}>Cart</button>
                         <button className="container btn-primary d-block" id="reviews" onClick={onTabClick}>Reviews</button>
-                        <button className="container btn-primary d-block" id="gallery" onClick={onTabClick}>Gallery</button>
                         <button className="container btn-primary d-block" id="dining" onClick={onTabClick}>Dining</button>
                     </div>
                 </div>
