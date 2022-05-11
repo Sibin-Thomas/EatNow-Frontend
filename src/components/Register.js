@@ -1,5 +1,29 @@
 import React from "react";
 import Branding from "./Branding";
+import logo1 from "../images/logo2.png"
+
+var stylingObject = {
+    div: {
+     position:"absolute",
+      color: "white",
+      top:"100px",
+      left: "250px",
+      transform: "translate(-50%, -50%)",
+      "text-align": "center",
+      "font-family": "Lucida Handwriting",
+      "font-style": "italic",
+      "font-size": "100px"
+
+    },
+    input:{
+        position:"absolute",
+        top:"400px",
+        left: "100px",
+        width:"700px",
+        transform: "translate(-50%, -50%)",
+        "font-size": "1px",
+    }
+}
 
 class Register extends React.Component {
 
@@ -35,10 +59,13 @@ class Register extends React.Component {
     render() {
         return (
             <div>
-                <Branding/>
                 <div>
-                    <div className="container d-flex justify-content-center p-3 h3">Register here</div>
-                    <div className="row w-100">
+                 <img src={logo1} className="img-thumbnail" width="2000px"/>
+                 <div style={stylingObject.div}>
+                  Eat Now!!
+                 <div style={stylingObject.input}>
+                 <div className="container d-flex justify-content-center p-3 h3">Register here</div>
+                 <div className="row w-100">
                         <div className="col"/>
                         <div className="col-3">
                             <select class="form-select" aria-label="Default select example" id="selectMode">
@@ -90,7 +117,10 @@ class Register extends React.Component {
                         </div>
                         <div className="col"/>
                     </div>
+                 </div>
+                 </div>   
                 </div>
+               
             </div>
         );
     }

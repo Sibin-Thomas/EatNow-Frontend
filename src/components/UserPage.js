@@ -5,6 +5,32 @@ import UserAccount from "./UserAccount";
 import {useParams} from "react-router-dom";
 import OrderHistory from "./OrderHistory";
 import BookingHistory from "./BookingHistory";
+import logo1 from "../images/logo2.png"
+
+var stylingObject = {
+    div: {
+     position:"absolute",
+      color: "white",
+      top:"100px",
+      left: "250px",
+      transform: "translate(-50%, -50%)",
+      "text-align": "center",
+      "font-family": "Lucida Handwriting",
+      "font-style": "italic",
+      "font-size": "100px"
+
+    },
+    input:{
+        position:"absolute",
+        color: "white",
+        top:"300px",
+        left: "550px",
+        width:"1100px",
+        transform: "translate(-50%, -50%)",
+        "font-size": "20px",
+    }
+}
+
 
 function UserPage({navigation, route}) {
     const [tabValue, setTabValue] = useState("search")
@@ -49,9 +75,12 @@ function UserPage({navigation, route}) {
 
     return (
         <div className="">
-            <Branding/>
+            <div className="container-fluid d-flex">
+            <div style={stylingObject.div}>
+            Eat Now!!
+            <div style={stylingObject.input}>
             <div className="row mt-3">
-                <div className="col-3">
+            <div className="col-3">
                     <div className="container">
                         <button className="container btn-primary d-block" id="search" onClick={onTabClick}>Search Restaurant</button>
                         <button className="container btn-primary d-block" id="account" onClick={onTabClick}>Account</button>
@@ -65,6 +94,11 @@ function UserPage({navigation, route}) {
                     }
                 </div>
             </div>
+            </div>
+            </div>
+            <img src={logo1} className="img-thumbnail" width="2000px"/>
+            </div>
+           
         </div>
     );
 }
